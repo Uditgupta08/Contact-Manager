@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact List</title>
+    <link rel="stylesheet" href="/css/list.css" />
+  </head>
+  <body>
+    <h1>Contact List</h1>
+    <ul>
+      <% contacts.forEach(contact => { %>
+      <li>
+        <%= contact.name %> - <%= contact.email %> - <%= contact.phone %>
+        <form
+          action="/contacts/edit/<%= contact._id %>"
+          method="get"
+          style="display: inline"
+        >
+          <button type="submit">Edit</button>
+          <button
+            type="submit"
+            formaction="/contacts/edit/<%= contact._id %>?_method=DELETE"
+            formmethod="post"
+          >
+            Delete
+          </button>
+        </form>
+      </li>
+      <% }); %>
+    </ul>
+  </body>
+</html>
